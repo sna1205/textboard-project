@@ -14,8 +14,31 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+        @keyframes neon {
+            from {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 20px #ff00ff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #ff00ff,
+                    0 0 50px #ff00ff,
+                    0 0 60px #ff00ff;
+                }
+            to {
+                text-shadow: 
+                    0 0 10px #fff,
+                    0 0 20px #fff,
+                    0 0 30px #ff00ff,
+                    0 0 40px #ff00ff,
+                    0 0 50px #ff00ff,
+                    0 0 60px #ff00ff,
+                    0 0 70px #ff00ff;
+            } 
+        }
         .slide-in { animation: slide-in 2s ease-out; }
         .fade-in { animation: fade-in 2s ease-out; }
+        .neon { animation: neon 1.5s infinite alternate;}
     </style>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
