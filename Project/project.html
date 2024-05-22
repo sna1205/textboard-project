@@ -4,23 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <div>Text Board</div>
-    <div>Save</div>
-    <div>font</div>
-    <div>animation</div>
-    <div>color</div>
-    <div>size</div>
-    <div>board frame</div>
-    <div>background color</div>
-    <div>
-        <button>start btn</button>
-        <button>reset btn</button>
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <div class="">
+            <h1 class="text-center font-bold text-2xl italic font-mono">Text Board</h1>
+            <div class="mt-4 mb-4">
+                <label for="textinput" class="text-lg font-medium text-gray-700">Text input:</label>
+                <input type="text" id="textInput" class="border border-gray-300 rounded-md p-1" placeholder="Enter your text here">
+            </div>
+            <div class="mb-4">
+                <label for="emojiPicker" class="text-lg font-medium text-gray-700">Emoji:</label>
+                <input type="text" id="emojiPicker" class="border border-gray-300 rounded-md p-1" placeholder="Enter emojis here">
+            </div>
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-2">
+            <div class="grid grid-cols-2 mb-3">
+                <label for="fontPicker" class="text-lg font-medium text-gray-700">Text font:</label>
+                <select id="fontPicker" class="mt-1 block w-full border border-gray-300 rounded-md p-1">
+                    <option value="font-sans">Sans</option>
+                    <option value="font-serif">Serif</option>
+                    <option value="font-mono">Monospace</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2">
+                <label for="animationPicker" class="text-lg font-medium text-gray-700 pl-4">animaton:</label>
+                <select id="animationPicker" class="mt-1 block w-full border border-gray-300 rounded-md p-1">
+                    <option value="none">None</option>
+                    <option value="slide-in">Slide In</option>
+                    <option value="fade-in">Fade In</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2">
+                <label for="frameStylePicker" class="text-lg font-medium text-gray-700 pl-4">Frame:</label>
+                <select id="frameStylePicker" class="mt-1 block w-full border border-gray-300 rounded-md p-1">
+                    <option value="border-none">None</option>
+                    <option value="border-solid border-2 border-gray-300">Solid</option>
+                    <option value="border-dashed border-2 border-gray-300">Dashed</option>
+                    <option value="border-dotted border-2 border-gray-300">Dotted</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2 mb-3">
+                <label for="bgColorPicker" class=" text-lg font-medium text-gray-700">Background color:</label>
+                <input type="color" id="bgColorPicker" class="mt-1">
+            </div>
+            <div class="grid grid-cols-2 mb-3">
+                <label for="colorPicker" class="block text-lg font-medium text-gray-700 pl-4">Text Color:</label>
+                <input type="color" id="colorPicker" class="mt-1">
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <button id="previewButton" class="bg-blue-500 text-white px-4 py-2 rounded-md">Preview</button>
+            <button id="resetButton" class="bg-red-500 text-white px-4 py-2 rounded-md">Reset</button>
+        </div>
     </div>
-    
     <script>
-        
+        document.getElementById('previewButton').addEventListener('click', function() {
+            const textInput = document.getElementById('textInput').value;
+            const colorPicker = document.getElementById('colorPicker').value;
+            const fontPicker = document.getElementById('fontPicker').value;
+            const emojiPicker = document.getElementById('emojiPicker').value;
+            const animationPicker = document.getElementById('animationPicker').value;
+            const bgColorPicker = document.getElementById('bgColorPicker').value;
+            const frameStylePicker = document.getElementById('frameStylePicker').value;
+
+            localStorage.setItem('textInput', textInput);
+            localStorage.setItem('colorPicker', colorPicker);
+            localStorage.setItem('fontPicker', fontPicker);
+            localStorage.setItem('emojiPicker', emojiPicker);
+            localStorage.setItem('animationPicker', animationPicker);
+            localStorage.setItem('bgColorPicker', bgColorPicker);
+            localStorage.setItem('frameStylePicker', frameStylePicker);
+
+            window.location.href = 'displayscreen.html';
+        });
+
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('colorPicker').value = '#000000';
+            document.getElementById('fontPicker').value = 'font-sans';
+            document.getElementById('emojiPicker').value = '';
+            document.getElementById('animationPicker').value = 'none';
+            document.getElementById('bgColorPicker').value = '#ffffff';
+            document.getElementById('frameStylePicker').value = 'border-none';
+        });
     </script>
 </body>
 </html>
