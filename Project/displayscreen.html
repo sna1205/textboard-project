@@ -54,14 +54,13 @@
             const animationPicker = localStorage.getItem('animationPicker');
             const bgColorPicker = localStorage.getItem('bgColorPicker');
             const frameStylePicker = localStorage.getItem('frameStylePicker');
-            const fontSizePicker = localStorage.getItem('fontSizePicker');
 
             const displayArea = document.getElementById('displayArea');
             displayArea.style.color = colorPicker;
-            displayArea.className = `${fontPicker} ${frameStylePicker} ${animationPicker} ${fontSizePicker} w-full h-full flex items-center justify-center`; //Manil
+            displayArea.className = `${fontPicker} ${frameStylePicker} ${animationPicker} w-full h-full flex items-center justify-center`;
             displayArea.style.backgroundColor = bgColorPicker;
             displayArea.innerHTML = `${textInput} ${emojiPicker}`;
-            
+            displayArea.style.fontSize = '3rem';  // Adjust the font size as needed
         });
     </script>
 </body>
