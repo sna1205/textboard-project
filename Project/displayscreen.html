@@ -36,9 +36,28 @@
                     0 0 70px #ff00ff;
             } 
         }
+        @keyframes mixedColor{
+            0% {
+                color: #ff00ff;
+            }
+            25% {
+                color: #00ffff;
+            }
+            50% {
+                color: #00ff00;
+            }
+            75% {
+                color: #ffff00;
+            }
+            100% {
+                color: #ff00ff;
+            }
+        }
         .slide-in { animation: slide-in 2s ease-out; }
         .fade-in { animation: fade-in 2s ease-out; }
         .neon { animation: neon 1.5s infinite alternate;}
+        .mixedColor { animation: mixedColor 3s infinite alternate;}
+
     </style>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
@@ -54,14 +73,13 @@
             const animationPicker = localStorage.getItem('animationPicker');
             const bgColorPicker = localStorage.getItem('bgColorPicker');
             const frameStylePicker = localStorage.getItem('frameStylePicker');
-            const fontSizePicker = localStorage.getItem('fontSizePicker');
 
             const displayArea = document.getElementById('displayArea');
             displayArea.style.color = colorPicker;
-            displayArea.className = `${fontPicker} ${frameStylePicker} ${animationPicker} ${fontSizePicker} w-full h-full flex items-center justify-center`; //Manil
+            displayArea.className = `${fontPicker} ${frameStylePicker} ${animationPicker} w-full h-full flex items-center justify-center`;
             displayArea.style.backgroundColor = bgColorPicker;
             displayArea.innerHTML = `${textInput} ${emojiPicker}`;
-            
+            displayArea.style.fontSize = '3rem';  // Adjust the font size as needed
         });
     </script>
 </body>
