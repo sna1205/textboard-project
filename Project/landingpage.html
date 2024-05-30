@@ -6,26 +6,33 @@
     <title>Simple Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-300">
     <!-- Header -->
-    <header class="bg-white shadow">
+    <header class="bg-white shadow-md fixed top-0 w-full z-10">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="text-lg font-bold text-gray-700">Text Animation</div>
+            <div class="text-lg font-bold text-black">Text Animation</div>
             <nav class="space-x-4">
-                <a href="#" class="text-white hover:text-blue-500 border rounded-md px-2 py-1 bg-blue-500">Home</a>
-                <a href="#" class="text-white hover:text-blue-500 border rounded-md px-2 py-1 bg-blue-500">About</a>
-                <a href="#" class="text-white hover:text-blue-500 border rounded-md px-2 py-1 bg-blue-500">Services</a>
-                <a href="#" class="text-white hover:text-blue-500 border rounded-md px-2 py-1 bg-blue-500">Contact</a>
+                <a href="#" class="text-white text-lg font-medium hover:text-white-500 transition duration-300 rounded-lg px-2 py-1 bg-blue-500 hover:bg-blue-700 hover:underline">Home</a>
+                <a href="#" class="text-white text-lg font-medium hover:text-white-500 transition duration-300 rounded-lg px-2 py-1 bg-blue-500 hover:bg-blue-700 hover:underline">About</a>
+                <a href="#" class="text-white text-lg font-medium hover:text-white-500 transition duration-300 rounded-lg px-2 py-1 bg-blue-500 hover:bg-blue-700 hover:underline">Services</a>
+                <a href="#" class="text-white text-lg font-medium hover:text-white-500 transition duration-300 rounded-lg px-2 py-1 bg-blue-500 hover:bg-blue-700 hover:underline">Contact</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-blue-500 text-white">
-        <div class="container mx-auto px-6 py-20">
-            <h1 class="text-4xl font-bold mb-4">Welcome to Our Website</h1>
-            <p class="text-lg mb-8">We are glad to have you here. Explore our services and products to know more about us.</p>
-            <a href="#" class="bg-white text-blue-500 font-bold py-2 px-4 rounded hover:bg-gray-200">Learn More</a>
+    <section class="flex bg-blue-500 text-white h-[600px]">
+        <div class="container mx-auto px-6 py-32 flex flex-col md:flex-row items-center">
+            <!-- Text Content -->
+            <div class="md:w-1/2 md:pr-6 mb-6 md:mb-0">
+                <h1 class="text-4xl font-bold mb-4">Welcome to Our Website</h1>
+                <p class="text-lg mb-8">We are glad to have you here. Explore our services and products to know more about us.</p>
+                <a href="#" class="bg-white text-blue-500 font-bold py-2 px-4 rounded hover:bg-gray-200">Learn More</a>
+            </div>
+            <!-- Image Content -->
+            <div class="md:w-1/2 flex justify-center md:pl-6">
+                <img src="images/pngtree-graphic-designer-flat-character-vector-illustration-png-image_13245290.png" alt="Image description" class="w-full max-w-xs">
+            </div>
         </div>
     </section>
 
