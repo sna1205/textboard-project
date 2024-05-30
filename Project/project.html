@@ -11,6 +11,7 @@
     <style>
         body {
             font-family:  'Space Mono';
+            /* mix-blend-mode: difference; */
         }
         
         #fontSizeValue {
@@ -19,6 +20,7 @@
             margin-top: 0.5rem;
         }
 
+        
         @keyframes slideUp {
             0% {
                 transform: translateY(100%) rotate(-90deg);
@@ -46,7 +48,7 @@
         }
     </style>    
 </head>
-<body class="bg-blue-50">
+<body class="">
     <div class="flex min-h-screen">
         <!-- Left side with logo -->
         <div class="flex-1 bg-blue-600 flex items-center justify-center">
@@ -54,8 +56,8 @@
         </div>
         
         <!-- Right side with form -->
-        <div class="flex-1 flex items-center justify-center">
-            <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-md rounded-md">
+        <div class="flex-1 bg-blue-300 flex items-center justify-center">
+            <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-2xl rounded-xl">
                 <h2 class="text-2xl font-bold text-gray-700 text-center">Create a Text Animation</h2>
                 <p class="text-sm text-gray-500 text-center">"Unleash Your Creativity" <br>
                     🖌️✨ Design your dreams. 🎨🚀</p>
@@ -199,6 +201,9 @@
         // Update the font size percentage display
         fontSizeValue.textContent = `${this.value}%`;
     });
+
+    
+    
 </script>
 </body>
 </html>
