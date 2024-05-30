@@ -11,7 +11,6 @@
     <style>
         body {
             font-family:  'Space Mono';
-            /* mix-blend-mode: difference; */
         }
         
         #fontSizeValue {
@@ -40,11 +39,11 @@
         }
     
         .animate-slide-up {
-            animation: slideUp 4s ease-in-out infinite alternate;
+            animation: slideUp 2s ease-in-out infinite alternate;
         }
     
         .animate-slide-down {
-            animation: slideDown 4s ease-in-out infinite alternate;
+            animation: slideDown 2s ease-in-out infinite alternate;
         }
     </style>    
 </head>
@@ -138,6 +137,7 @@
 
     
     <script>
+        // Preview button click
         
         document.getElementById('previewButton').addEventListener('click', function() {
             const textInput = document.getElementById('textInput').value;
@@ -159,6 +159,7 @@
     
             window.location.href = 'displayscreen.html'; // Redirect to displayscreen.html
         });
+        // Resest button click
     
         document.getElementById('resetButton').addEventListener('click', function() {
             document.getElementById('textInput').value = '';
@@ -202,8 +203,6 @@
         fontSizeValue.textContent = `${this.value}%`;
     });
 
-    
-    
 </script>
 </body>
 </html>
