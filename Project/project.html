@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEXT ANIMATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">   
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            font-family:  'Space Mono';
+        }
+        
+        #fontSizeValue {
+            grid-column: 1 / span 2;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
         @keyframes slideUp {
             0% {
                 transform: translateY(100%) rotate(-90deg);
@@ -52,21 +65,36 @@
                         <div>
                             <input type="text" id="textInput" class="w-full border border-gray-300 rounded px-4 py-2 mb-4" placeholder="Enter text here..." />
                         </div>
+
                     </div>
                     <!-- font chooser -->
                     <div class="grid grid-cols-2 ">
                         <label for="fontPicker" class="font-medium">FONT</label>
                         <select id="fontPicker" class="border border-gray-300 rounded px-2 py-1">
+                            <option value="font-arial">Arial</option>
+                            <option value="font-medium">Medium</option>
+                            <option value="font-bold">Bold</option>
                             <option value="font-sans">Sans</option>
                             <option value="font-serif">Serif</option>
                             <option value="font-mono">Monospace</option>
                         </select>
                     </div>
+
+                    <div class="grid grid-cols-2">
+                        <label for="fontSizeSlider" class="font-medium">FONT SIZE</label>
+                        <input type= "range" id="fontSizeSlider" class="border border-gray-300 rounded px-2 py-1" min="10" max="500" value="25">
+                        <span id="fontSizeValue" class="ml-2">25%</span>
+                    </div>
+
                     <!-- animation -->
                     <div class="grid grid-cols-2 ">
                         <label for="animationPicker" class="font-medium">ANIMATION</label>
                         <select id="animationPicker" class="border border-gray-300 rounded px-2 py-1">
                             <option value="none">None</option>
+                            <option value="loop-left-to-right">Loop Left To Right</option>
+                            <option value="loop-right-to-left">Loop Right To Left</option>
+                            <option value="zoom-in-and-out">Zoom In and Out</option>
+                            <option value="bounce">Bounce</option>
                             <option value="slide-in">Slide In</option>
                             <option value="fade-in">Fade In</option>
                             <option value="neon">Neon</option>
@@ -105,62 +133,75 @@
             </div>
         </div>
     </div>
+
+    
     <script>
         
-    document.getElementById('previewButton').addEventListener('click', function() {
-        const textInput = document.getElementById('textInput').value;
-        const colorPicker = document.getElementById('colorPicker').value;
-        const fontPicker = document.getElementById('fontPicker').value;
-        const animationPicker = document.getElementById('animationPicker').value;
-        const bgColorPicker = document.getElementById('bgColorPicker').value;
-        const frameStylePicker = document.getElementById('frameStylePicker').value;
+        document.getElementById('previewButton').addEventListener('click', function() {
+            const textInput = document.getElementById('textInput').value;
+            const fontSize = document.getElementById('fontSizeSlider').value + 'px';
+            const colorPicker = document.getElementById('colorPicker').value;
+            const fontPicker = document.getElementById('fontPicker').value;
+            const animationPicker = document.getElementById('animationPicker').value;
+            const bgColorPicker = document.getElementById('bgColorPicker').value;
+            const frameStylePicker = document.getElementById('frameStylePicker').value;
 
-        localStorage.setItem('textInput', textInput);
-        localStorage.setItem('colorPicker', colorPicker);
-        localStorage.setItem('fontPicker', fontPicker);
-        localStorage.setItem('animationPicker', animationPicker);
-        localStorage.setItem('bgColorPicker', bgColorPicker);
-        localStorage.setItem('frameStylePicker', frameStylePicker);
-
-        window.location.href = 'displayscreen.html'; // Redirect to displayscreen.html
-    });
-
-    document.getElementById('resetButton').addEventListener('click', function() {
-        document.getElementById('textInput').value = '';
-        document.getElementById('colorPicker').value = '#000000';
-        document.getElementById('fontPicker').value = 'font-sans';
-        document.getElementById('animationPicker').value = 'none';
-        document.getElementById('bgColorPicker').value = '#ffffff';
-        document.getElementById('frameStylePicker').value = 'border-none';
-        document.getElementById('size').value = '50';
-        document.getElementById('sizeValue').innerText = '50%';
-    });
-    // Function to animate text
-// Function to alternate between animations
-function animateText() {
-    const animatedText = document.getElementById('animated-text');
     
-    // Check if the text currently has the slideUp animation class
-    const isSlideUp = animatedText.classList.contains('animate-slide-up');
+            localStorage.setItem('textInput', textInput);
+            localStorage.setItem('fontSize', fontSize);
+            localStorage.setItem('colorPicker', colorPicker);
+            localStorage.setItem('fontPicker', fontPicker);
+            localStorage.setItem('animationPicker', animationPicker);
+            localStorage.setItem('bgColorPicker', bgColorPicker);
+            localStorage.setItem('frameStylePicker', frameStylePicker);
     
-    // Toggle between animations
-    if (isSlideUp) {
-        animatedText.classList.remove('animate-slide-up');
-        animatedText.classList.add('animate-slide-down');
-    } else {
-        animatedText.classList.remove('animate-slide-down');
-        animatedText.classList.add('animate-slide-up');
+            window.location.href = 'displayscreen.html'; // Redirect to displayscreen.html
+        });
+    
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('colorPicker').value = '#000000';
+            document.getElementById('fontPicker').value = 'font-sans';
+            document.getElementById('animationPicker').value = 'none';
+            document.getElementById('bgColorPicker').value = '#ffffff';
+            document.getElementById('frameStylePicker').value = 'border-none';
+            document.getElementById('size').value = '50';
+            document.getElementById('sizeValue').innerText = '50%';
+        });
+
+        // Function to animate text
+    // Function to alternate between animations
+    function animateText() {
+        const animatedText = document.getElementById('animated-text');
+        
+        // Check if the text currently has the slideUp animation class
+        const isSlideUp = animatedText.classList.contains('animate-slide-up');
+        
+        // Toggle between animations
+        if (isSlideUp) {
+            animatedText.classList.remove('animate-slide-up');
+            animatedText.classList.add('animate-slide-down');
+        } else {
+            animatedText.classList.remove('animate-slide-down');
+            animatedText.classList.add('animate-slide-up');
+        }
+        
+        // Trigger animation again after a delay
+        setTimeout(animateText, 4000);
     }
     
-    // Trigger animation again after a delay
-    setTimeout(animateText, 4000);
-}
+    // Start the animation loop
+    animateText();
 
-// Start the animation loop
-animateText();
+    const fontSizeSlider = document.getElementById('fontSizeSlider');
+    const fontSizeValue = document.getElementById('fontSizeValue')
+    fontSizeSlider.addEventListener('input', function() {
+        // Update the font size percentage display
+        fontSizeValue.textContent = `${this.value}%`;
+    });
 
 
-
+    
 </script>
 </body>
 </html>
