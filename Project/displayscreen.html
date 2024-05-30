@@ -43,16 +43,17 @@
                 transform: translateY(-20px);
             }
         }
-           
 
         @keyframes slide-in {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(0); }
         }
+
         @keyframes fade-in {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+
         @keyframes neon {
             from {
                 text-shadow: 
@@ -75,6 +76,7 @@
                     0 0 70px #ff00ff;
             } 
         }
+
         @keyframes mixedColor{
             0% {
                 color: #ff00ff;
@@ -120,7 +122,6 @@
             const animationPicker = localStorage.getItem('animationPicker');
             const bgColorPicker = localStorage.getItem('bgColorPicker');
             const frameStylePicker = localStorage.getItem('frameStylePicker');
-
             const displayArea = document.getElementById('displayArea');
             const animatedText = document.getElementById('animatedText');
 
@@ -136,12 +137,8 @@
             if (animationPicker === 'bounce' || animationPicker == 'zoom-in-and-out' || animationPicker == 'loop-left-to-right' || animationPicker == 'loop-right-to-left') {
                 animatedText.className = `animatedText ${animationPicker}`;
             } 
-            
-
-           
-            
-
         });
+
     </script>
 </body>
 </html>
