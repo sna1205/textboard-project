@@ -6,6 +6,45 @@
     <title>Display Screen</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        @keyframes loop-left-to-right {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes loop-right-to-left{
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes zoom-in-and-out {
+            0%, 100% {
+                transform: scale(0.8);
+            }
+
+            50% {
+                transform: scale(4);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+           
+
         @keyframes slide-in {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(0); }
@@ -57,29 +96,47 @@
         .fade-in { animation: fade-in 2s ease-out; }
         .neon { animation: neon 1.5s infinite alternate;}
         .mixedColor { animation: mixedColor 3s infinite alternate;}
+        .bounce {animation: bounce 1s infinite;}
+        .zoom-in-and-out {animation: zoom-in-and-out 1s infinite;}
+        .loop-left-to-right {animation: loop-left-to-right 5s linear infinite;}
+        .loop-right-to-left {animation: loop-right-to-left 5s linear infinite;}
 
     </style>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
 
-    <div id="displayArea" class="text-center"></div>
+    <div id="displayArea" class="text-center">
+        <div id="animatedText" class=""></div>
+    </div>
+    
 
     <script>
         window.addEventListener('load', function() {
-            const textInput = localStorage.getItem('textInput');
-            const colorPicker = localStorage.getItem('colorPicker');
-            const fontPicker = localStorage.getItem('fontPicker');
-            const emojiPicker = localStorage.getItem('emojiPicker');
-            const animationPicker = localStorage.getItem('animationPicker');
-            const bgColorPicker = localStorage.getItem('bgColorPicker');
-            const frameStylePicker = localStorage.getItem('frameStylePicker');
+            const textInput = localStorage.getItem('textInput') || 'Default Text';
+            const fontSize = localStorage.getItem('fontSize') || '16px';
+            const colorPicker = localStorage.getItem('colorPicker') || '#000000';
+            const fontPicker = localStorage.getItem('fontPicker') || 'font-sans';
+            const emojiPicker = localStorage.getItem('emojiPicker') || '';
+            const animationPicker = localStorage.getItem('animationPicker') || '';
+            const bgColorPicker = localStorage.getItem('bgColorPicker') || '#ffffff';
+            const frameStylePicker = localStorage.getItem('frameStylePicker') || '';
 
             const displayArea = document.getElementById('displayArea');
+            const animatedText = document.getElementById('animatedText');
+
+            animatedText.innerHTML = `${textInput} ${emojiPicker}`;
+
             displayArea.style.color = colorPicker;
-            displayArea.className = `${fontPicker} ${frameStylePicker} ${animationPicker} w-full h-full flex items-center justify-center`;
+            displayArea.className = `${fontPicker} ${frameStylePicker} w-full h-full flex items-center justify-center`;
             displayArea.style.backgroundColor = bgColorPicker;
-            displayArea.innerHTML = `${textInput} ${emojiPicker}`;
-            displayArea.style.fontSize = '3rem';  // Adjust the font size as needed
+            displayArea.style.fontSize = fontSize;
+
+            // Apply the animation to the text directly
+            animatedText.className = animationPicker;
+
+            if (animationPicker === 'bounce' || animationPicker === 'zoom-in-and-out' || animationPicker === 'loop-left-to-right' || animationPicker === 'loop-right-to-left') {
+                animatedText.className = animationPicker;
+            }
         });
     </script>
 </body>
