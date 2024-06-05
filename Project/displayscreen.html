@@ -11,19 +11,19 @@
     <style>
       @keyframes loop-left-to-right {
         0% {
-          transform: translateX(-100%);
+          transform: translateX(-100vw);
         }
         100% {
-          transform: translateX(100%);
+          transform: translateX(100vw);
         }
       }
 
       @keyframes loop-right-to-left {
         0% {
-          transform: translateX(100%);
+          transform: translateX(100vw);
         }
         100% {
-          transform: translateX(-100%);
+          transform: translateX(-100vw);
         }
       }
 
@@ -97,6 +97,14 @@
           color: #ff00ff;
         }
       }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
       .slide-in {
         animation: slide-in var(--animation-speed) ease-out;
       }
@@ -120,6 +128,9 @@
       }
       .loop-right-to-left {
         animation: loop-right-to-left var(--animation-speed) linear infinite;
+      }
+      .spin {
+        animation: spin var(--animation-speed) linear infinite;
       }
     </style>
   </head>
