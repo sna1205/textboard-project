@@ -1,144 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Display Screen</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <style>
-        @keyframes loop-left-to-right {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
+      @keyframes loop-left-to-right {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes loop-right-to-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      @keyframes zoom-in-and-out {
+        0%,
+        100% {
+          transform: scale(0.8);
         }
 
-        @keyframes loop-right-to-left{
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+        50% {
+          transform: scale(4);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
         }
 
-        @keyframes zoom-in-and-out {
-            0%, 100% {
-                transform: scale(0.8);
-            }
-
-            50% {
-                transform: scale(4);
-            }
+        50% {
+          transform: translateY(-20px);
         }
+      }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+      @keyframes slide-in {
+        0% {
+          transform: translateX(-100%);
         }
-
-        @keyframes slide-in {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
+        100% {
+          transform: translateX(0);
         }
+      }
 
-        @keyframes fade-in {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
         }
-
-        @keyframes neon {
-            from {
-                text-shadow: 
-                    0 0 5px #fff,
-                    0 0 10px #fff,
-                    0 0 20px #ff00ff,
-                    0 0 30px #ff00ff,
-                    0 0 40px #ff00ff,
-                    0 0 50px #ff00ff,
-                    0 0 60px #ff00ff;
-                }
-            to {
-                text-shadow: 
-                    0 0 10px #fff,
-                    0 0 20px #fff,
-                    0 0 30px #ff00ff,
-                    0 0 40px #ff00ff,
-                    0 0 50px #ff00ff,
-                    0 0 60px #ff00ff,
-                    0 0 70px #ff00ff;
-            } 
+        100% {
+          opacity: 1;
         }
+      }
 
-        @keyframes mixedColor{
-            0% {
-                color: #ff00ff;
-            }
-            25% {
-                color: #00ffff;
-            }
-            50% {
-                color: #00ff00;
-            }
-            75% {
-                color: #ffff00;
-            }
-            100% {
-                color: #ff00ff;
-            }
+      @keyframes neon {
+        from {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff,
+            0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff,
+            0 0 60px #ff00ff;
         }
-        .slide-in { animation: slide-in 4s ease-out; }
-        .fade-in { animation: fade-in 4s ease-out; }
-        .neon { animation: neon 1.5s infinite alternate;}
-        .mixedColor { animation: mixedColor 3s infinite alternate;}
-        .bounce {animation: bounce 3s infinite;}
-        .zoom-in-and-out {animation: zoom-in-and-out 3s infinite;}
-        .loop-left-to-right {animation: loop-left-to-right 10s linear infinite;}
-        .loop-right-to-left {animation: loop-right-to-left 10s linear infinite;}
+        to {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff,
+            0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff,
+            0 0 70px #ff00ff;
+        }
+      }
 
+      @keyframes mixedColor {
+        0% {
+          color: #ff00ff;
+        }
+        25% {
+          color: #00ffff;
+        }
+        50% {
+          color: #00ff00;
+        }
+        75% {
+          color: #ffff00;
+        }
+        100% {
+          color: #ff00ff;
+        }
+      }
+      .slide-in {
+        animation: slide-in var(--animation-speed) ease-out;
+      }
+      .fade-in {
+        animation: fade-in var(--animation-speed) ease-out;
+      }
+      .neon {
+        animation: neon var(--animation-speed) infinite alternate;
+      }
+      .mixedColor {
+        animation: mixedColor var(--animation-speed) infinite alternate;
+      }
+      .bounce {
+        animation: bounce var(--animation-speed) infinite;
+      }
+      .zoom-in-and-out {
+        animation: zoom-in-and-out var(--animation-speed) infinite;
+      }
+      .loop-left-to-right {
+        animation: loop-left-to-right var(--animation-speed) linear infinite;
+      }
+      .loop-right-to-left {
+        animation: loop-right-to-left var(--animation-speed) linear infinite;
+      }
     </style>
-</head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-
+  </head>
+  <body class="flex items-center justify-center h-screen bg-gray-100">
     <div id="displayArea" class="text-center">
-        <div id="animatedText" class=""></div>
+      <div id="animatedText" class=""></div>
     </div>
-    
 
     <script>
-        window.addEventListener('load', function() {
-            const textInput = localStorage.getItem('textInput');
-            const fontSize = localStorage.getItem('fontSize');
-            const colorPicker = localStorage.getItem('colorPicker');
-            const fontPicker = localStorage.getItem('fontPicker');
-            const emojiPicker = localStorage.getItem('emojiPicker');
-            const animationPicker = localStorage.getItem('animationPicker');
-            const bgColorPicker = localStorage.getItem('bgColorPicker');
-            const frameStylePicker = localStorage.getItem('frameStylePicker');
-            const displayArea = document.getElementById('displayArea');
-            const animatedText = document.getElementById('animatedText');
+      window.addEventListener("load", function () {
+        const textInput = localStorage.getItem("textInput");
+        const fontSize = localStorage.getItem("fontSize");
+        const colorPicker = localStorage.getItem("colorPicker");
+        const fontPicker = localStorage.getItem("fontPicker");
+        const emojiPicker = localStorage.getItem("emojiPicker");
+        const animationPicker = localStorage.getItem("animationPicker");
+        const bgColorPicker = localStorage.getItem("bgColorPicker");
+        const frameStylePicker = localStorage.getItem("frameStylePicker");
+        const animationSpeed = localStorage.getItem("animationSpeed") || "2s";
+        const displayArea = document.getElementById("displayArea");
+        const animatedText = document.getElementById("animatedText");
 
-            animatedText.innerHTML = `${textInput} ${emojiPicker}`;
+        animatedText.innerHTML = `${textInput} ${emojiPicker}`;
 
-            displayArea.style.color = colorPicker;
-            displayArea.className = `${fontPicker} ${frameStylePicker} w-full h-full flex items-center justify-center`;
-            displayArea.style.backgroundColor = bgColorPicker;
-            displayArea.style.fontSize = fontSize;
+        displayArea.style.color = colorPicker;
+        displayArea.className = `${fontPicker} ${frameStylePicker} w-full h-full flex items-center justify-center`;
+        displayArea.style.backgroundColor = bgColorPicker;
+        displayArea.style.fontSize = fontSize;
 
-            // Apply the animation to the text directly
-            animatedText.className = `${animationPicker}`;
-            if (animationPicker === 'bounce' || animationPicker == 'zoom-in-and-out' || animationPicker == 'loop-left-to-right' || animationPicker == 'loop-right-to-left') {
-                animatedText.className = `animatedText ${animationPicker}`;
-            } 
-        });
+        // Apply the animation to the text directly
+        animatedText.className = `${animationPicker}`;
+        animatedText.style.setProperty("--animation-speed", animationSpeed);
 
+        if (
+          animationPicker === "bounce" ||
+          animationPicker == "zoom-in-and-out" ||
+          animationPicker == "loop-left-to-right" ||
+          animationPicker == "loop-right-to-left"
+        ) {
+          animatedText.className = `animatedText ${animationPicker}`;
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
