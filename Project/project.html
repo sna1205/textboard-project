@@ -314,6 +314,35 @@
           `${this.value}s`
         );
       });
+      document.addEventListener("DOMContentLoaded", function() {
+    // Load stored values
+        const storedText = localStorage.getItem("textInput");
+        const storedFontSize = localStorage.getItem("fontSize");
+        const storedColor = localStorage.getItem("colorPicker");
+        const storedFont = localStorage.getItem("fontPicker");
+        const storedAnimation = localStorage.getItem("animationPicker");
+        const storedBgColor = localStorage.getItem("bgColorPicker");
+        const storedFrameStyle = localStorage.getItem("frameStylePicker");
+        const storedSpeed = localStorage.getItem("animationSpeed");
+
+    if (storedText) document.getElementById("textInput").value = storedText;
+    if (storedFontSize) {
+      const fontSize = storedFontSize.replace("px", "");
+      document.getElementById("fontSizeSlider").value = fontSize;
+      document.getElementById("fontSizeValue").innerText = fontSize + "%";
+    }
+    if (storedColor) document.getElementById("colorPicker").value = storedColor;
+    if (storedFont) document.getElementById("fontPicker").value = storedFont;
+    if (storedAnimation) document.getElementById("animationPicker").value = storedAnimation;
+    if (storedBgColor) document.getElementById("bgColorPicker").value = storedBgColor;
+    if (storedFrameStyle) document.getElementById("frameStylePicker").value = storedFrameStyle;
+    if (storedSpeed) {
+      const speed = storedSpeed.replace("s", "");
+      document.getElementById("speedSlider").value = speed;
+      document.getElementById("speedValue").innerText = speed + "s";
+      document.documentElement.style.setProperty("--animation-speed", storedSpeed);
+    }
+    });
     </script>
   </body>
 </html>
